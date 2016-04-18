@@ -1,0 +1,80 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="app">MATHS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="app">
+                    <span class="glyphicon glyphicon-home"
+                     aria-hidden="true"></span> Home</a></li>
+                <li><a ui-sref="app.aboutus">
+                    <span class="glyphicon glyphicon-info-sign"
+                     aria-hidden="true"></span> About</a></li>
+                <li><a ui-sref="app.menu">
+                     <span class="glyphicon glyphicon-list-alt"
+                     aria-hidden="true"></span>
+                     Courses</a></li>
+                 <li><a ui-sref="app.contactus">
+                 <i class="fa fa-envelope-o"></i> Contact</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" data-target="#loginModal">
+                  <span class="glyphicon glyphicon-log-in">
+                  </span> {{appCtr.user.member ? 'Login' : 'Register'}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md" ng-controller="RegisterController as rCtr">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">REGISTER To Enroll </h4>
+            <h6 ng-click="rCtr.claim()">Already Registered? <a href="">SIGN IN</a></h6>
+        </div>
+
+        <div class="modal-body">
+            <form class="form-inline" role="form" ng-submit="rCtr.register()" name='regForm'>
+              <div class="form-group">
+                    <label class="sr-only" for="userName">User Name</label>
+                    <input type="text" class="form-control input-sm" id="userName"
+                     ng-model="rCtr.user.username" placeholder="User Name">
+              </div>
+              <!--div class="form-group">
+                    <label class="sr-only" for="idEmail">Email address</label>
+                    <input type="email" class="form-control input-sm" id="idEmail"
+                     ng-model="rCtr.prospect.email"placeholder="Email">
+              </div-->
+              <div class="form-group">
+                <label class="sr-only" for="pw">Password</label>
+                <input type="password" class="form-control input-sm" id="pw"
+                 ng-model="rCtr.user.pw"placeholder="Password">
+              </div>
+              <div class="checkbox">
+                <label for="remember">
+                    <input type="checkbox" id ="remember" name="remember" value="">
+                    <strong> Remember Me? </strong>
+                </label>
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    {{rCtr.user.member ? 'Sign In' : 'Register'}}</button>
+                  <button type="button" class="btn btn-default btn-sm"
+                          data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+
+<div class="container" ng-controller="UserController as uCtr">
+  <div class="col-xs-12">
+     <ul class="breadcrumb">
+         <li><a href="#">Home</a></li>
+         <li><a href="#">Home</a></li>
+         <li class="active">Courses</li>
+     </ul>
+  </div>
+    <div class="row row-content">
+      <div class="col-xs-12" ng-if="!uCtr.showCs">
+        <h3>{{uCtr.message}}</h3>
+      </div>
+      <div class="col-xs-12">
+         <button ng-click="uCtr.toggleDetails()" class="btn btn-xs btn-primary pull-right" type="button">
+                {{uCtr.showDetails ? 'Hide Details':'Show Details'}}
+         </button>
+         <ul class="nav nav-tabs" role="tablist">
+             <li role="presentation"
+              ng-class="{active:uCtr.isSelected(1)}">
+             <a ng-click="uCtr.select(1)"
+              aria-controls="all menu"
+              role="tab">All Courses</a></li>
+             <li role="presentation"
+              ng-class="{active:uCtr.isSelected(2)}">
+             <a ng-click="uCtr.select(2)"
+              aria-controls="juniors"
+              role="tab">Junior</a></li>
+             <li role="presentation"
+              ng-class="{active:uCtr.isSelected(3)}">
+             <a ng-click="uCtr.select(3)"
+              aria-controls="intermediate"
+              role="tab">Intermediate</a></li>
+             <li role="presentation"
+              ng-class="{active:uCtr.isSelected(4)}">
+             <a ng-click="uCtr.select(4)"
+              aria-controls="senior"
+              role="tab">Senior</a></li>
+          </ul>
+          <div class="tab-content">
+          <ul class="media-list" tab-pane fade in active">
+            <li class="media" ng-repeat="course in uCtr.courses">
+                <div class="media-left media-middle">
+                    <a ui-sref="app.course({id: course._id})">
+                    <img class="media-object img-thumbnail"
+                     ng-src={{course.img}} alt={{course.name}}>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">{{course.name}}
+                     <span class="label label-success">{{course.progress}}</span>
+                    </h2>
+                    <a class="btn btn-lg btn-primary" role="button" ui-sref="app.cor({id:course._id})">
+                    Go To Course <i class="fa fa-hand-o-right"></i></a>
+                </div>
+            </li>
+          </ul>
+          </div>
+      </div>
+    </div>
+</div>

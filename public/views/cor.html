@@ -1,0 +1,43 @@
+<header class="jumbotron">
+    <div class="container">
+        <div class="row row-header">
+            <div class="col-lg-12">
+                <h1>Teach Your Children To Use Their Math Skills To Save The Planet.</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-fluid" ng-controller="CorController as cCtr">
+    <div class="row row-header">
+        <div class="col-xs-12 col-sm-2">
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <form class="">
+            <img ng-repeat="img in cCtr.cor.imgs.first track by $index" ng-src={{cCtr.cor.srcs.first}} height="40" width="40" alt="first" />
+            <img ng-repeat="img in cCtr.cor.imgs.second" ng-src={{cCtr.cor.srcs.second}} alt="second" />
+
+            <div class="form-group">
+              <label for="">{{cCtr.cor.problem}}</label>
+              <label for="">{{cCtr.cor.prompt}}</label>
+              <textarea name="name" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="">{{cCtr.cor.submit}}</label>
+              <input type="text" name="soln" class="form-control" ng-model="cCtr.soln" value="">
+            </div>
+              <button class="btn btn-default" type="button" ng-click="cCtr.solve()"><i class="fa fa-upload"></i> Submit</button>
+            </form>
+            <i ng-show="cCtr.right" class="fa fa-check-circle"></i><br>
+            <a ng-show="cCtr.wrong" a href="">
+              Would you like to try again? <i class="fa fa-repeat"></i></a><br>
+            <a ng-click="cCtr.shift(false)"><i class="fa fa-arrow-left"> PREV</i></a>
+            <a ng-click="cCtr.shift(true)">NEXT <i class="fa fa-arrow-right"></i></a>
+            <div class="input-group">
+              <input type="text" class="" placeholder="Answer...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go! <i class="fa fa-upload"></i></button>
+              </span>
+            </div><!-- /input-group -->            
+        </div>
+    </div>
+</div>
